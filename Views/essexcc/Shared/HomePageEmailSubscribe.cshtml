@@ -1,6 +1,6 @@
 ﻿@addTagHelper "*, Microsoft.AspNetCore.Mvc.TagHelpers"
 @model string
-    <h3 class="h2"> 
+    <h3 class="section-heading"> 
         Stay up to date
     </h3>
 
@@ -13,8 +13,8 @@
                 <label for="email">Enter your email address</label>
                 <input type="text"  id="email" name="emailAddress" placeholder="Enter your email address">
             </div>
-            <div class="signup-button">
-                <input type="submit" class="button subscribe" value="Subscribe">
+            <div class="signup-button" id="submitYourEmailAddress">
+                <input type="submit" class="button subscribe" value="Subscribe" aria-labelledby="submitYourEmailAddress">
                 @if(Model != null) {
                 <input type="hidden" class="" name="EmailAlertsTopicId" value="@Model" />
             }
