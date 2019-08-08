@@ -1,0 +1,20 @@
+.hero {
+  background-image: file-url("/img/hero.jpg");
+  background-repeat:  no-repeat;
+  background-size: cover;
+  background-position-x: 0;
+  background-position-y: 0;
+  width: 100%;
+  &.tree {
+    background-image: file-url("/main-hero.jpg");
+  }
+  &.campaign {
+    background-image: file-url("/img/impact.jpg");
+    @include media(mobile) {
+      background: none !important;
+      .overlay {
+        background: none;
+      }
+    }
+  }
+}

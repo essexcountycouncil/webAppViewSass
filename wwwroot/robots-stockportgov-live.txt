@@ -1,0 +1,11 @@
+﻿User-agent: *
+Disallow:/*.jpg$
+Disallow:/*.jpeg$
+Disallow:/*.png$
+Disallow:/*.gif$
+Disallow:/*.tiff$
+Disallow:/*.bmp$
+Disallow:/*.pdf$
+Disallow:/*.svg$
+Disallow:/smart/*
+Disallow:/*_hidden

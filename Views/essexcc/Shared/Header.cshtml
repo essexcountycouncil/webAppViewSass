@@ -1,0 +1,33 @@
+﻿@using System.Threading.Tasks
+@using EssexWebapp.Models
+@inject IStaticAssets StaticAssets
+@inject EssexWebapp.Utils.ILoggedInHelper loggedInHelper
+@inject EssexWebapp.FeatureToggling.FeatureToggles featureToggles
+
+<header class="header-background" role="banner">
+    <div class="header">
+        <nav class="nav">
+            <div class="logo-wrap">
+                <a href="/" class="logo-text seax">
+                    <img src="~/assets/images/content/seax.png" width="36px" height="30px" /> 
+                    Essex.gov.uk
+                </a>
+            </div>
+            <div class="logo-wrap">
+                <a href="/" class="logo-text seax">
+                    <img src="/public/images/seax.png" width="36px" height="30px" alt="Essex logo">
+                    Essex.gov.uk
+                </a>
+            </div>
+            
+            @{
+                var controller = ViewContext.RouteData.Values["Controller"].ToString();
+            }
+            @* Dont show search in header on the home or search pages *@
+            @if ((controller != "Home") && (controller != "Search"))
+            {
+                @Html.Partial("HeaderSearchBar")
+            }
+        </nav>
+    </div>
+</header>

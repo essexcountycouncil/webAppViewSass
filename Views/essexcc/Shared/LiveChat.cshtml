@@ -1,0 +1,8 @@
+﻿@model EssexWebapp.Models.LiveChat
+<div class="l-right-side-bar-section side-bar-section-live-chat">
+    <h2>@Model.Title</h2>
+    <div id="OnlineChat" class="online-chat"> <stock-button>Live chat</stock-button> </div> 
+    <p>
+        @Html.Raw(Model.Text)
+    </p> 
+</div>

@@ -1,0 +1,10 @@
+﻿@model IEnumerable<EssexWebapp.Models.SocialMediaLink>
+@inject EssexWebapp.Config.BusinessId BusinessId
+
+
+    @foreach (var socialMediaLink in Model)
+    {
+        <li>
+            <a href="@socialMediaLink.Url"><i class="fab fa-@socialMediaLink.Icon.ToLower()"></i><span>@socialMediaLink.Title</span></a>
+        </li>
+    }

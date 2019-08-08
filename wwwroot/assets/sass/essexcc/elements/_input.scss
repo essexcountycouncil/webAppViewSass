@@ -1,0 +1,13 @@
+input {
+  @include box-sizing(border-box);
+  @include border-radius(0);
+  font-family: $stack;
+  font-size: ms(0);
+  font-weight: $normal;
+  text-transform: none;
+  height: $form-height*0.75;
+  padding: $baseline*0.25;
+  border-width: $border-normal;
+  border-style: solid;
+  border-color: $grey-dark;
+}

@@ -1,0 +1,137 @@
+﻿@using EssexWebapp.Config
+@inject IApplicationConfiguration ApplicationConfiguration
+@inject BusinessId BusinessId
+@inject CurrentEnvironment CurrentEnvironment
+
+<!DOCTYPE html>
+<html lang="en-GB" class="no-js">
+<head>
+    @Html.Partial("SecurityHeaders")
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="essex.gov.uk - The place to find services and information provided by Essex County Council and its partners.">
+    @Html.Partial("OwnershipVerificationCodes")
+    @Html.Partial("Favicon")
+    <title>@ViewData["Title"]</title>
+    <meta property="og:title" content="@ViewData["Title"]" />
+
+    <link href="~/assets/stylesheets/cludo-search-default.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/assets/stylesheets/site-sg.min.css" asp-append-version="true" />
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+
+    <!--[if IE]>
+
+    <![endif]-->
+
+    @RenderSection("BackgroundImage")
+    @RenderSection("CarouselBackgroundImage")
+
+    @Html.Partial("CookieBanner")
+    @await Component.InvokeAsync("GoogleAnalytics")
+
+    <script type="text/javascript" src="~/assets/javascript/vendor/require.2.3.4.min.js"></script>
+    <script type="text/javascript" src="/assets/javascript/requireConfig.js"></script>
+
+
+
+    <!-- Hotjar Tracking Code for https://www.essex.gov.uk/Pages/Default.aspx -->
+
+    <script>
+
+        (function (h, o, t, j, a, r) {
+
+            h.hj = h.hj || function () { (h.hj.q = h.hj.q || []).push(arguments) };
+
+            h._hjSettings = { hjid: 719326, hjsv: 6 };
+
+            a = o.getElementsByTagName('head')[0];
+
+            r = o.createElement('script'); r.async = 1;
+
+            r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+
+            a.appendChild(r);
+
+        })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
+
+    </script>
+
+</head>
+<body>
+    @if (!string.IsNullOrEmpty(ApplicationConfiguration.GetGoogleAnalyticsCode(BusinessId.ToString()).ToString()))
+    {
+        <!-- Google Tag Manager (noscript) -->
+        <noscript>
+            <iframe src="https://www.googletagmanager.com/ns.html?id=@ApplicationConfiguration.GetGoogleAnalyticsCode(BusinessId.ToString())"
+                    height="0" width="0" style="display:none;visibility:hidden"></iframe>
+        </noscript>
+        <!-- End Google Tag Manager (noscript) -->
+    }
+    <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+
+
+    @Html.Partial("SkipToMainContent")
+
+    @Html.Partial("BrowserCheck")
+    @Html.Partial("Header")
+
+    @if (CurrentEnvironment.Name != "stage" && CurrentEnvironment.Name != "preview")
+    {
+        @Html.Partial("BetaBanner")
+    }
+    else
+    {
+        @Html.Partial("StagingBanner")
+    }
+
+
+
+
+    @RenderBody()
+    <distributed-cache name="footer" expires-after="@TimeSpan.FromMinutes(ApplicationConfiguration.GetFooterCache(BusinessId.ToString()))" enabled="true">
+        @await Component.InvokeAsync("Footer")
+    </distributed-cache>
+
+
+    <!-- Javascript -->
+    <script src="~/assets/javascript/vendor/govuk-template.js" type="text/javascript"></script>
+    <!--[if lte IE 8]><script src="/public/javascripts/bind.js"></script><![endif]-->
+    <script src="~/assets/javascript/vendor/details.polyfill.js"></script>
+    <script src="~/assets/javascript/vendor/jquery.min.js"></script>
+    <script src="~/assets/javascript/vendor/govuk-shim-links-with-button-role.js"></script>
+    <script src="~/assets/javascript/vendor/govuk-show-hide-content.js"></script>
+    <script src="~/assets/javascript/vendor/govuk-application.js"></script>
+    <script src="~/assets/javascript/vendor/auto-store-data.js"></script>
+
+
+    <!--
+    <script type="text/javascript">
+        require(['carousel', 'viewmoreslider', 'matchHeight', 'matchboxconfig', 'slick', 'utils'],
+            function (details.polyfill, carousel, viewmoreslider, matchHeight, matchboxconfig, slick, utils) {
+                startup.Init();
+                viewmoreslider.Init();
+                matchboxconfig.Init();
+                carousel.Init();
+                utils.Init();
+            })
+    </script>
+    -->
+
+    <script type="text/javascript">
+        require(['validate', 'clipboard', 'jquery-ui', 'jquery.cookie'],
+            function (validate, clipboard, jqueryui, jquerycookie) {
+            })
+    </script>
+
+    <script type="text/javascript">
+        require(['cludo'], function () { });
+        require(['cludoconfig'],
+            function (cludoconfig) {
+                cludoconfig.Init();
+            })
+    </script>
+
+</body>
+</html>

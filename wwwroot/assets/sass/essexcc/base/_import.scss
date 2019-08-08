@@ -1,0 +1,17 @@
+@import "reset";
+@import "fonts";
+@import "variables";
+@import "mixin";
+@import "modularscale/_import.scss";
+@import "_base.scss";
+
+@import "gds/import";
+
+/*@import "core/identity/import";
+@import "core/layout/import";
+@import "core/elements/import";
+@import "core/components/import";
+@import "core/pages/import";*/
+
+// dev styles will overwrite component/element styles to help view in markdown documentation
+//@import "dev";

@@ -1,0 +1,11 @@
+﻿@model EssexWebapp.ProcessedModels.ProcessedGroup
+@using EssexWebapp.FeatureToggling
+@inject FeatureToggles FeatureToggles
+
+@{
+    var url = ViewBag.CurrentUrl != null ? ViewBag.CurrentUrl : string.Empty;
+    var title = ViewData["Title"];
+}
+<div class="groupLastUpdated">
+    <p>Last updated <partial name="FormattedDate" model='Model.DateLastModified'/></p>
+</div>

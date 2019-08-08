@@ -1,0 +1,34 @@
+﻿@using EssexWebapp.Models
+@using EssexWebapp.Utils
+@model Alert
+@inject ICookiesHelper CookiesHelper
+@{
+    bool isDismissed = false;
+
+    var alertCookies = CookiesHelper.GetCookies<Alert>("alerts");
+    if (alertCookies != null && alertCookies.Contains(Model.Slug))
+    {
+        isDismissed = true;
+    }
+}
+@if (!isDismissed)
+{
+    <div class="alert js-hidden" id="tab-one" aria-hidden="true">
+        <div class="alert-icon">
+            <i class="fas fa-exclamation-triangle alert-icon"></i> @*@Model.Severity.ToLowerInvariant()*@
+        </div>
+        <div class="alert-text">
+            <h2>@Model.Title</h2>
+            @if (!string.IsNullOrEmpty(Model.SubHeading))
+            {
+                <p class="alert-subheading">@Model.SubHeading</p>
+            }
+
+            <p>@Html.Raw(Model.Body)</p>
+        </div>
+        <div data-target="tab-one">
+            <input class="checkbox" id="hide-one" type="checkbox" aria-controls="tab-one" aria-expanded="false">
+            <label class="close" for="hide-one"><i class="fas fa-times" aria-hidden="true" data-slug="@Model.Slug"></i></label>
+        </div>
+    </div>
+}

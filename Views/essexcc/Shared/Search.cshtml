@@ -1,0 +1,13 @@
+﻿@model Tuple<string, string, string>
+@addTagHelper "*, Microsoft.AspNetCore.Mvc.TagHelpers"
+
+<form class="form" id="@Model.Item1" role="search" method="get">
+    <div class="group search" role="search">
+        <div class="search-input">
+            <label for="@Model.Item1">Search essex.gov.uk</label>
+            <input type="text" class="" placeholder="@Model.Item2" id="@Model.Item3" name="query" autocomplete="off">
+            @*<input type="submit" value="search" class="visually-hidden">*@
+            <button class="fas fa-search search-icon-position"></button>
+        </div>
+    </div>
+</form>

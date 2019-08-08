@@ -1,0 +1,14 @@
+﻿@using EssexWebapp.Models
+@using EssexWebapp.ViewModels
+@using EssexWebapp.Utils
+@model List<Group>
+
+<ul class="group-listing-container grid-container matchbox-parent">
+    @foreach (var group in Model)
+    {
+        <partial name="Groups/GroupCard" model='group'/>
+    }
+</ul>
+
+
+

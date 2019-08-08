@@ -1,0 +1,17 @@
+﻿@model IEnumerable<EssexWebapp.Models.SubItem>
+
+@{
+    var count = 1;
+    if (Model != null)
+    {
+        <div class="button-bar">
+            @foreach (var subItem in Model.Take(3))
+            {
+                <div class="bar-button">
+                    <a class="button" href="@subItem.NavigationLink" role="button" id="task-block-@count">@subItem.Title</a>
+                </div>
+                count++;
+            }
+        </div>
+    }
+}

@@ -1,0 +1,38 @@
+﻿@using EssexWebapp.FeatureToggling
+@using EssexWebapp.Models
+@using EssexWebapp.ProcessedModels
+@model EssexWebapp.ViewModels.GroupDetailsViewModel
+@inject FeatureToggles FeatureToggles
+
+@{
+    ViewData["Title"] = Model.Group.Name;
+    ViewData["og:title"] = Model.Group.Name;
+    ViewData["Description"] = Model.Group.Description;
+    ViewData["Type"] = "Group";
+    ViewData["Location"] = Model.Group.Address;
+    Layout = "../Shared/_Layout.cshtml";
+}
+
+@section Breadcrumbs {
+    <partial name="Breadcrumb" model='Model.Group.Breadcrumbs'/>
+}
+
+@if (FeatureToggles.GroupDetailsPage)
+{
+    <link rel="stylesheet" media="print" type="text/css" href="/assets/stylesheets/print-group-detail-new.min.css" />
+    <partial name="GroupDetail" model='Model'/>
+}
+else
+{ 
+    <link rel="stylesheet" media="print" type="text/css" href="/assets/stylesheets/print-group-detail.min.css" />
+    <partial name="GroupDetailOld" model='Model'/>
+}
+<script type="text/javascript">
+    require(['startup', 'favourites',  'groups',  'matchboxconfig', 'matchHeight', ],
+        function (startup, favourites,  groups, matchboxconfig, matchHeight) {
+            favourites.Init();
+            groups.Init();
+            startup.Init();
+            matchboxconfig.Init();
+        })
+</script>

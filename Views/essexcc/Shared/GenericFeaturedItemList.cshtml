@@ -1,0 +1,10 @@
+﻿@model EssexWebapp.Models.GenericFeaturedItemList
+@{
+    var take = string.IsNullOrEmpty(Model.ButtonText) ? Model.Items.Count : 4;
+}
+
+@if (Model != null)
+{
+    @Html.Partial("GenericFeaturedItem", Model.Items)
+}
+

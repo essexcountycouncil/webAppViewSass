@@ -1,0 +1,21 @@
+﻿@using EssexWebapp.Models
+@{
+    ViewData["Title"] = Model.Title;
+    ViewData["Form"] = true;
+    Layout = "../Shared/_LayoutSemantic";   
+}
+
+@model EssexWebapp.ViewModels.SmartAnswerViewModel
+<div class="page-container" id="smart-answers-container">
+    <h1 tabindex="-1" id="content">@ViewData["Title"]</h1>
+    <partial name="Components/QuestionRenderer/Semantic/QuestionForm" model='Model.Page'/>
+</div>
+@section Scripts
+    {
+    <script type="text/javascript">
+            require(["essexcc/questioncomponent/questionmodule"],
+                function(module) {
+                    module.Init("smart/@Model.Slug");
+                });
+    </script>
+}

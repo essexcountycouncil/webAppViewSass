@@ -1,0 +1,69 @@
+﻿@using EssexWebapp.Config
+@using EssexWebapp.Config
+@inject IApplicationConfiguration ApplicationConfiguration
+@inject CurrentEnvironment CurrentEnvironment
+@inject BusinessId BusinessId
+@{
+    var bannerTypeformUrl = ViewData["BannerTypeformUrl"];
+    var stylesheet = ApplicationConfiguration.GetStylesheetConfig();
+}
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=12.0, minimum-scale=1, user-scalable=yes" />
+    <link rel="shortcut icon" type="image/png" href="~/assets/images/ui-images/favicon-sg.png" />
+    <title>@ViewData["Title"] - Essex County Council</title>
+    <link rel="stylesheet" type="text/css" href="@stylesheet.GoogleFonts" />
+    <link rel="stylesheet" type="text/css" href="@stylesheet.FontAwesome" />
+    <link rel="stylesheet" type="text/css" href="@stylesheet.CludoSearch" />
+    <link rel="stylesheet" type="text/css" href="@stylesheet.JqueryUi" />
+    <link rel="stylesheet" type="text/css" href="@stylesheet.StyleguideSemanticV2" />
+    <link rel="stylesheet" type="text/css" href="@stylesheet.Slick" />
+    <script type="text/javascript" src="~/assets/javascript/vendor/require.2.3.4.min.js"></script>
+    @if (CurrentEnvironment.Name == "test")
+    {
+        <script type="text/javascript" src="/assets/javascript/requireConfigUitest.js"></script>
+    }
+    else
+    {
+        <script type="text/javascript" src="/assets/javascript/requireConfig.js"></script>
+    }
+    @*@Html.Partial("CookieBanner")*@
+</head>
+<body>
+    <header>
+        <div class="skip-to-main-content">
+            <a href="#content">Skip to main content</a>
+        </div>
+        <partial name="SemanticHeader" />
+        <partial name="BrowserCheckSemantic" />
+        @if (bannerTypeformUrl != null)
+        {
+            <partial name="TypeFormBannerHeader" model='bannerTypeformUrl' />
+        }
+        @RenderSection("Breadcrumbs", false)
+    </header>
+
+    <main id="content" class="@ViewData["FullWidth"]">
+        @RenderBody()
+    </main>
+
+    @RenderSection("Scripts", false)
+    <distributed-cache name="semanticFooter" expires-after="@TimeSpan.FromMinutes(ApplicationConfiguration.GetFooterCache(BusinessId.ToString()))" enabled="true">
+        @await Component.InvokeAsync("SemanticFooter")
+    </distributed-cache>
+
+    <script type="text/javascript">
+        require(['startup', 'carousel', 'viewmoreslider', 'matchHeight', 'matchboxconfig', 'slick', 'utils'],
+            function (startup, carousel, viewmoreslider, matchHeight, matchboxconfig, slick, utils) {
+                startup.Init();
+                viewmoreslider.Init();
+                matchboxconfig.Init();
+                carousel.Init();
+                utils.Init();
+            })
+    </script>
+</body>
+</html>

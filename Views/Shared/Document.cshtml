@@ -1,0 +1,29 @@
+﻿@using System.Runtime.InteropServices.ComTypes
+@model EssexWebapp.Models.Document
+<div class="file-link">
+    <div class="icon">     
+        <a href="@Model.Url" target="_blank" rel="nofollow" alt="file download">
+            <i class="far fa-file-alt" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div class="info">
+        <a href="@Model.Url" target="_blank" class="document-detail-title" rel="nofollow"><h3>@Model.Title</h3> </a>
+        @{
+            var Megabytes = Model.Size / (1048576.0);
+            var Kilobytes = (Model.Size % 1048576) / 1024;
+        }
+        <p>
+            <span>
+                @if (Megabytes >= 1.0)
+                {
+                    @:PDF, @Megabytes.ToString("#.##") MB
+                }
+                else
+                {
+                    @:PDF, @Kilobytes.ToString("#.##") KB
+                }
+            </span>
+        </p>
+        <p class="text-small assistive-disclaimer">This file may not be suitable for users of assistive technology.</p>
+    </div>
+</div>

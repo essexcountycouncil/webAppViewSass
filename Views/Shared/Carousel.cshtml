@@ -1,0 +1,36 @@
+﻿@model List<EssexWebapp.Models.CarouselContent>
+<h2 class="visuallyhidden">Carousel</h2>
+<div class="carousel" role="application">
+    @{ int counter = 1; }
+    @foreach (var carouselContent in Model)
+    {
+        @*<a href="@carouselContent.URL">
+            <div class="stockport-carousel webcast-@counter">
+                <div class="stockport-carousel-text">
+                    <h2>@carouselContent.Title</h2>
+                    <p>
+                        @carouselContent.Teaser
+                    </p>
+                </div>
+                <div class="stockport-carousel-gradient"></div>
+            </div>
+        </a>*@
+    <div class="impact">
+        <div class="hero campaign" style="background-image:url(@carouselContent.Image)">
+            <div class="overlay"></div>
+            
+                <div class="overlay-box">
+                    <div class="overlay-content">
+                        <h2><a href="@carouselContent.URL">@carouselContent.Title</a></h2>
+                        <p>
+                            @carouselContent.Teaser
+                        </p>
+                    </div>
+                </div>
+            
+        </div>
+    </div>
+        counter++;
+    }
+</div>
+
