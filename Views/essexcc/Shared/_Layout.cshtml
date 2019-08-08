@@ -87,12 +87,9 @@
         @Html.Partial("StagingBanner")
     }
 
+    @RenderSection("Breadcrumbs", false)
     <main id="content">
         <div class="container">
-
-
-
-            @RenderSection("Breadcrumbs", false)
             @RenderBody()
         </div>
         <div class="hidden" id="envname">@CurrentEnvironment.Name</div>
