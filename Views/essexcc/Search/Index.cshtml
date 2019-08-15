@@ -4,64 +4,13 @@
     Layout = "../Shared/_Layout.cshtml";
 }
 
-@section Scripts
-    {
-
-    @*
-        <script type="text/javascript" src="//customer.cludo.com/scripts/bundles/search-script.min.js"></script>
-        <script>
-            var CludoSearch;
-            (function () {
-                var cludoSettings = {
-                    customerId: 2222,
-                    engineId: 10834,
-                    searchUrl: '/search',
-                    language: 'en',
-                    searchInputs: ['cludo-search-form'],
-                    type: 'inline',
-                    themeBannerColor: { textColor: '#4d4d4d', backgroundColor: '#f2f2f2' }
-                };
-                CludoSearch = new Cludo(cludoSettings);
-                CludoSearch.init();
-            })();
-        </script>
-        <!--[if lte IE 9]>
-        <script src="https://api.cludo.com/scripts/xdomain.js" slave="https://api.cludo.com/proxy.html" type="text/javascript"></script>
-        <![endif]-->
-    *@
-
-
-    @*
-        <script type="text/javascript" src="//customer.cludo.com/scripts/bundles/search-script.min.js"></script>
-        <script>
-        var CludoSearch;
-        (function () {
-            var cludoSettings = {
-                customerId: 2222,
-                engineId: 10834,
-                searchUrl: 'https://libraries.essex.gov.uk/cludo/',
-                language: 'en',
-                searchInputs: ['cludo-search-form'],
-                type: 'inline',
-                themeBannerColor: {textColor: '#4d4d4d', backgroundColor: '#f2f2f2'}
-            };
-        CludoSearch= new Cludo(cludoSettings);
-        CludoSearch.init();
-        })();
-        </script>
-        <!--[if lte IE 9]>
-        <script src="https://api.cludo.com/scripts/xdomain.js" slave="https://api.cludo.com/proxy.html" type="text/javascript"></script>
-        <![endif]-->
-    *@
-}
-
 @section Breadcrumbs {
-    <div class="breadcrumbs">
-        <ol>
-            <li>@Html.ActionLink("Home", "Index", "Home")</li>
-            <li class="current">Search</li>
-        </ol>
-    </div>
+<div class="breadcrumbs">
+    <ol>
+        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+        <li class="current">Search</li>
+    </ol>
+</div>    
 }
 
 <div id="cludo-search-results">
@@ -69,11 +18,7 @@
         <div class="main">
             <section class="intro">
                 <h1>Search</h1>
-                @*<div class="search">*@
-                @*<div class="search-input">*@
                 @Html.Partial("Search", new Tuple<string, string, string>("cludo-search-hero-form", "Search essex.gov.uk", "cludo-search-bar"))
-                @*</div>*@
-                @*</div>*@
             </section>
             <section class="content">
                 <div class="cludo-c-9">
@@ -85,39 +30,3 @@
         </div>
     </div>
 </div>
-
-
-
-@*
-    <div class="main">
-        <section class="mid">
-            <h1>Search</h1>
-        </section>
-
-        <section class="mid">
-            <div class="search-background">
-                <div class="search">
-                    <div class="search-box">
-                        <div class="search-input">
-                            @Html.Partial("Search", new Tuple<string, string, string>("cludo-search-hero-form", "Search Essex County Council", "cludo-search-bar"))
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="cludo-search-results">
-                <div class="cludo-r">
-                    <div class="cludo-c-3">
-                        <div class="search-filters"></div>
-                    </div>
-                    <div class="cludo-c-9">
-                        <div class="search-result-count"></div>
-                        <div class="search-did-you-mean"></div>
-                        <div class="search-results"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-*@
