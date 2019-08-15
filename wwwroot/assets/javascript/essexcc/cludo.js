@@ -8,7 +8,7 @@
             language: 'en',
             //type: 'inline',
             disableAutocomplete: true,
-            hideSearchFilters: false,
+            hideSearchFilters: true,
             initSearchBoxText: 'Search',
             searchInputs: ["cludo-search-form", "cludo-search-mobile-form", "cludo-search-hero-form"]
             //theme: { themeColor: '#055c58', themeBannerColor: { textColor: '#ffffff', backgroundColor: '#055c58' }, borderRadius: 10 }

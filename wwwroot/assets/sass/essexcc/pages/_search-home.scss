@@ -1,5 +1,5 @@
 .search-background {
-  background-image: file-url("/assets/images/content/hero.jpg");
+  background-image: url(/assets/images/content/hero.jpg);
   @media print {
     background-image: none;
   }
