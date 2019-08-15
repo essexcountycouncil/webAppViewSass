@@ -55,6 +55,15 @@
     *@
 }
 
+@section Breadcrumbs {
+    <div class="breadcrumbs">
+        <ol>
+            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+            <li class="current">Search</li>
+        </ol>
+    </div>
+}
+
 <div id="cludo-search-results">
     <div class="cludo-r">
         <div class="main">
@@ -67,7 +76,7 @@
                 @*</div>*@
             </section>
             <section class="content">
-                <div class="cludo-c-12" role="main">
+                <div class="cludo-c-9">
                     <div class="search-result-count"></div>
                     <div class="search-did-you-mean"></div>
                     <div class="search-results"></div>
@@ -76,6 +85,7 @@
         </div>
     </div>
 </div>
+
 
 
 @*
