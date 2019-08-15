@@ -55,21 +55,17 @@
     *@
 }
 
-<div class="breadcrumbs">
-    <ol>
-        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-        <li class="current">Search</li>
-    </ol>
-</div>
-
+@section Breadcrumbs {
+    <div class="breadcrumbs">
+        <ol>
+            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+            <li class="current">Search</li>
+        </ol>
+    </div>
+}
 
 <div id="cludo-search-results">
     <div class="cludo-r">
-        <aside class="side">
-            <div class="cludo-c-3">
-                <div class="search-filters"></div>
-            </div>
-        </aside>
         <div class="main">
             <section class="intro">
                 <h1>Search</h1>
