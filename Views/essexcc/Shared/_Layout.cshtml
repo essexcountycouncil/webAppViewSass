@@ -78,15 +78,6 @@
     @Html.Partial("BrowserCheck")
     @Html.Partial("Header")
 
-    @if (CurrentEnvironment.Name != "stage" && CurrentEnvironment.Name != "preview")
-    {
-        @Html.Partial("BetaBanner")
-    }
-    else
-    {
-        @Html.Partial("StagingBanner")
-    }
-
     @RenderSection("Breadcrumbs", false)
     <main id="content">
         <div class="container">

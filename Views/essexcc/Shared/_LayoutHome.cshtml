@@ -77,18 +77,6 @@
     @Html.Partial("BrowserCheck")
     @Html.Partial("Header")
 
-    @if (CurrentEnvironment.Name != "stage" && CurrentEnvironment.Name != "preview")
-    {
-        @Html.Partial("BetaBanner")
-    }
-    else
-    {
-        @Html.Partial("StagingBanner")
-    }
-
-
-
-
     @RenderBody()
     <distributed-cache name="footer" expires-after="@TimeSpan.FromMinutes(ApplicationConfiguration.GetFooterCache(BusinessId.ToString()))" enabled="true">
         @await Component.InvokeAsync("Footer")
