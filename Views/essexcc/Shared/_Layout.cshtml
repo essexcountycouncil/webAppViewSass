@@ -28,7 +28,6 @@
         <meta property="og:title" content="@ViewData["og:title"]" />
     }
 
-    <link href="~/assets/stylesheets/cludo-search-default.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <link rel="stylesheet" href="~/assets/stylesheets/site-sg.min.css" asp-append-version="true" />
     <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css">
@@ -67,8 +66,7 @@
     {
         <!-- Google Tag Manager (noscript) -->
         <noscript>
-            <iframe src="https://www.googletagmanager.com/ns.html?id=@ApplicationConfiguration.GetGoogleAnalyticsCode(BusinessId.ToString())"
-                    height="0" width="0" style="display:none;visibility:hidden"></iframe>
+            <iframe src="https://www.googletagmanager.com/ns.html?id=@ApplicationConfiguration.GetGoogleAnalyticsCode(BusinessId.ToString())" height="0" width="0" style="display:none;visibility:hidden"></iframe>
         </noscript>
         <!-- End Google Tag Manager (noscript) -->
     }
@@ -77,15 +75,6 @@
 
     @Html.Partial("BrowserCheck")
     @Html.Partial("Header")
-
-    @if (CurrentEnvironment.Name != "stage" && CurrentEnvironment.Name != "preview")
-    {
-        @Html.Partial("BetaBanner")
-    }
-    else
-    {
-        @Html.Partial("StagingBanner")
-    }
 
     @RenderSection("Breadcrumbs", false)
     <main id="content">
