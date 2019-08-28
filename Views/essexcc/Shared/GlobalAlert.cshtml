@@ -3,38 +3,39 @@
 @inject ICookiesHelper CookiesHelper
 @model Alert
 @{
-    bool isDismissed = false;
+  bool isDismissed = false;
 
-    var alertCookies = CookiesHelper.GetCookies<Alert>("alerts");
-    if (alertCookies != null && alertCookies.Contains(Model.Slug))
-    {
-        isDismissed = true;
-    }
+  var alertCookies = CookiesHelper.GetCookies<Alert>("alerts");
+  if (alertCookies != null && alertCookies.Contains(Model.Slug))
+  {
+    isDismissed = true;
+  }
 }
 @if (!isDismissed)
 {
-    <div class="alert @Model.Severity.ToLowerInvariant() js-hidden" id="tab-alert-@Model.Severity" aria-hidden="true">
-        <div class="alert-icon">
-            @if (@Model.Severity.ToLowerInvariant() == "error")
-            { <i class="fas fa-exclamation-circle alert-icon"></i>}
-            @if (@Model.Severity.ToLowerInvariant() == "warning")
-            {<i class="fas fa-exclamation-triangle alert-icon"></i> }
-            @if (@Model.Severity.ToLowerInvariant() == "information")
-            {<i class="fas fa-info-circle alert-icon"></i> }
-
-             @*@Model.Severity.ToLowerInvariant()*@
-        </div>
-        <div class="alert-text">
-            <h2>@Model.Title</h2>
-            @if (!string.IsNullOrEmpty(Model.SubHeading))
-            {
-                <p class="alert-subheading">@Model.SubHeading</p>
-            }
-            <p>@Html.Raw(Model.Body)</p>
-        </div>
-        <div data-target="tab-alert">
-            <input class="checkbox" id="hide-alert" type="checkbox" aria-controls="tab-alert" aria-expanded="false">
-            <label class="close" for="hide-alert"><i class="fas fa-times" aria-hidden="true" data-slug="@Model.Slug"></i></label>
-        </div>
+  <div class="alert @Model.Severity.ToLowerInvariant() js-hidden" id="tab-alert-@Model.Severity" aria-hidden="true">
+    <div class="alert-icon">
+      @if (@Model.Severity.ToLowerInvariant() == "error")
+      { 
+        <span class="fas fa-exclamation-circle alert-icon"></span>
+      }
+      @if (@Model.Severity.ToLowerInvariant() == "warning")
+      {
+        <span class="fas fa-exclamation-triangle alert-icon"></span>
+      }
+      @if (@Model.Severity.ToLowerInvariant() == "information")
+      {
+        <span class="fas fa-info-circle alert-icon"></span>
+      }
     </div>
+    <div class="alert-text">
+      <div class="section-heading">@Model.Title</div>
+      @if (!string.IsNullOrEmpty(Model.SubHeading))
+      {
+        <p class="alert-subheading">@Model.SubHeading</p>
+      }
+      <p>@Html.Raw(Model.Body)</p>
+    </div>
+    <button class="text" type="button" onclick="toggle_visibility('tab-alert-@Model.Severity');">Hide this message</button>
+  </div>
 }
