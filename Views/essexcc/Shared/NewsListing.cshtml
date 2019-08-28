@@ -2,62 +2,47 @@
 @using EssexWebapp.ViewModels
 @model NewsroomViewModel
 @{
-    var newsroom = Model.Newsroom;
+  var newsroom = Model.Newsroom;
 }
 @if (!newsroom.News.Any())
 {
-    
-    <h2>No news articles found.</h2>
+  <h2>No news articles found.</h2>
 }
 else
 {
-    <div class="landing">
-        @{
-            if (newsroom.Alerts != null)
-            {
-                foreach (var alert in newsroom.Alerts)
-                {
-                    <partial name="DisplayTemplates/Alert" model='alert' />
-                }
-            }
-        }
-        <ul>
-            @foreach (var subItem in newsroom.News)
-            {
-
-                <li id="@subItem.Slug" class="landing-preview">
-                    <div class="landing-text">
-                        <p class="meta">
-                            <partial name="FormattedDate" model='subItem.SunriseDate' />
-                        </p>
-                        <h3 class="sub-section-heading">
-                            <a href="@Url.Action("Detail", "News", new {slug = subItem.Slug})">
-                                @subItem.Title
-                            </a>
-                        </h3>
-                        <p>
-                            @subItem.Teaser
-                        </p>
-
-
-                    </div>
-                    <div class="landing-img">
-                        <img src="@subItem.Image" alt="@subItem.Title" width="200" height="112" />
-
-                        @*@if (!string.IsNullOrEmpty(subItem.ThumbnailImage))
-                            {
-                                <div class="mobile-grid-35 tablet-grid-30 grid-30 grid-parent nav-card-news-thumbnail nav-card-news-thumbnail-background-image tablet-push-70 push-70" style="background-image: url(@subItem.ThumbnailImage);"></div>
-                            }
-                            <div class="@(!string.IsNullOrEmpty(subItem.ThumbnailImage) ? "mobile-grid-65 tablet-grid-70 nav-card-news-detail pull-30 tablet-pull-30" : "") grid-70 grid-parent">
-                                <div class="news-date hide-on-mobile">
-                                    <i class="fa fa-clock-o" aria-hidden="true"></i><partial name="FormattedDate" model='subItem.SunriseDate' />
-                                </div>
-
-                            </div>*@
-                    </div>
-                </li>
-            }
-        </ul>
-    </div>
+  <div class="landing">
+  @{
+    if (newsroom.Alerts != null)
+    {
+      foreach (var alert in newsroom.Alerts)
+      {
+        <partial name="DisplayTemplates/Alert" model='alert' />
+      }
+    }
+  }
+  <ul>
+  @foreach (var subItem in newsroom.News)
+  {
+    <li id="@subItem.Slug" class="landing-preview">
+      <div class="landing-text">
+        <p class="meta">
+          <partial name="FormattedDate" model='subItem.SunriseDate' />
+        </p>
+        <h3 class="sub-section-heading">
+          <a href="@Url.Action("Detail", "News", new {slug = subItem.Slug})">
+            @subItem.Title
+          </a>
+        </h3>
+        <p>
+          @subItem.Teaser
+        </p>
+      </div>
+      <div class="landing-img">
+        <img src="@subItem.Image" alt="@subItem.Title" width="200" height="112" />
+      </div>
+    </li>
+  }
+  </ul>
+  </div>
 }
 <partial name="Pagination" model='Model.Pagination' />
