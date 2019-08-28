@@ -5,15 +5,12 @@
 <form asp-controller="Home" asp-action="EmailSubscribe" method="get" role="form" class="form">
   <div class="group">
     <div class="signup-input">
-      <label for="email">Enter your email address</label>
-      <input type="text"  id="email" name="emailAddress" placeholder="Enter your email address">
+      <label for="email">Enter your email address
+        <input type="text"  id="email" name="emailAddress" placeholder="Enter your email address" autocomplete="off">
+      </label>
     </div>
     <div class="signup-button" id="submitYourEmailAddress">
-      <input type="submit" class="button subscribe" value="Subscribe">
-      @if(Model != null) 
-      {
-        <input type="hidden" class="" name="EmailAlertsTopicId" value="@Model" />
-      }
+      <button type="submit" class="button subscribe" value="Subscribe">Subscribe</button>
     </div>
   </div>
 </form>
