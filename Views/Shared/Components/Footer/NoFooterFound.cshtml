@@ -1,28 +1,38 @@
 ﻿@using EssexWebapp.Models
 @inject IStaticAssets StaticAssets
 
-<footer class="footer-container" role="contentinfo">
-    <div class="footer-top">
-        <div class="footer">
-            <nav class="nav">
-                <ul class="nav-links">
-                    <li class="copyright">
-                        © Essex County Council @DateTime.Now.Year
-                    </li>
-                </ul>
-
-                <ul class="social">
-                </ul>
-            </nav>
-        </div>
+<footer id="main-footer" class="footer-container">
+  <div class="footer-top">
+    <div class="footer">
+      <div class="nav">
+        <ul class="nav-links">  
+          @if (Model.Links != null)
+          {
+            @Html.Partial("FooterLinks", Model.Links)
+          }
+        </ul>
+        <ul class="social">
+          @if (Model.SocialMediaLinks != null)
+          {
+            @Html.Partial("SocialMediaLinks", Model.SocialMediaLinks)
+          }
+        </ul>  
+      </div>
     </div>
-    <div class="footer-bottom">
-        <div class="footer">
-            <ul class="credits">
-                <li class="design-link">
-                    <a href="https://servicedesign.blog.essex.gov.uk/">Built by the Service Design Team</a>
-                </li>
-            </ul>
-        </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer">
+      <ul class="credits">
+        <li class="copyright">
+          @if (Model.CopyrightSection != null)
+          {
+              @Model.CopyrightSection @DateTime.Now.Year
+          }
+        </li>
+        <li class="design-link">
+            <a href="https://servicedesign.blog.essex.gov.uk/">Built by the Service Design Team</a>
+        </li>
+      </ul>
     </div>
+  </div>
 </footer>
