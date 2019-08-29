@@ -2,106 +2,51 @@
 @using EssexWebapp.FeatureToggling
 @using System.Text.RegularExpressions
 @inject FeatureToggles featureToggles
-
 @{
-    @if (Model.DisplayedSection != null)
-    {
-        ViewData["Title"] = Model.Article.Title + ": " + Model.DisplayedSection.Title;
-        ViewData["Description"] = Model.DisplayedSection.MetaDescription;
-
-    }
-    else
-    {
-        ViewData["Title"] = Model.Article.Title;
-        ViewData["Description"] = Model.Article.MetaDescription; /*; Model.Article.Teaser;*/
-
-    }
-
-    
-    ViewData["og:title"] = Model.OgTitleMetaData;
-    Layout = "../Shared/_Layout.cshtml";
+  @if (Model.DisplayedSection != null)
+  {
+    ViewData["Title"] = Model.Article.Title + ": " + Model.DisplayedSection.Title;
+    ViewData["Description"] = Model.DisplayedSection.MetaDescription;
+  }
+  else
+  {
+    ViewData["Title"] = Model.Article.Title;
+    ViewData["Description"] = Model.Article.MetaDescription; /*; Model.Article.Teaser;*/
+  }
+  ViewData["og:title"] = Model.OgTitleMetaData;
+  Layout = "../Shared/_Layout.cshtml";
 }
-
 @section Breadcrumbs {
-    @Html.Partial("Breadcrumb", Model.Article.Breadcrumbs)
+  @Html.Partial("Breadcrumb", Model.Article.Breadcrumbs)
 }
-
 <div class="main">
-
-    <section class="intro">
-        <h1>@Model.Article.Title</h1>
-
-
-        @{
-            if (Model.Article.Alerts != null)
-            {
-        <div class="alert-container">
-            @foreach (var alert in Model.Article.Alerts)
-            {
-                @*@Html.Partial("DisplayTemplates/Alert", alert)*@
-                @Html.Partial("GlobalAlert", alert)
-            }
-        </div>
-            }
+  <section class="intro">
+    <h1>@Model.Article.Title</h1>
+    @{
+      if (Model.Article.Alerts != null)
+      {
+    <div class="alert-container">
+        @foreach (var alert in Model.Article.Alerts)
+        {
+          @Html.Partial("GlobalAlert", alert)
         }
-    </section>
-
+    </div>
+      }
+    }
+  </section>
     @if (Model.DisplayedSection != null)
     {
-        @Html.Partial("../Shared/Section-Nav")
-        @Html.Partial("../Shared/Article-Single-Section", Model)
-        @Html.Partial("DisplayTemplates/Section-Pagination")
+      @Html.Partial("../Shared/Section-Nav")
+      @Html.Partial("../Shared/Article-Single-Section", Model)
+      @Html.Partial("DisplayTemplates/Section-Pagination")
     }
     else
     {
-    <section class="content article-page">
-        @Html.Raw(Model.Article.Body)
-    </section>
+  <section class="content article-page">
+    @Html.Raw(Model.Article.Body)
+  </section>
     }
-
-    <section class="function">
-        <a href="javascript:window.print()" class="print-link">Print this page</a>
-    </section>
+  <section class="function">
+    <a href="javascript:window.print()" class="print-link">Print this page</a>
+  </section>
 </div>
-
-@*@{
-    if (Model.HasParentTopicWithSubItems())
-    {
-        <aside class="side">
-            <div class="side-nav" role="navigation" aria-label="sidenav">
-                <h3>@Model.Article.ParentTopic.Name</h3>
-                <nav>
-                    <ul>
-                        @{var showMoreButton = false;}
-                        @foreach (var item in Model.SidebarSubItems(out showMoreButton))
-                        {
-                            <li class="@(item.NavigationLink == Model.Article.NavigationLink ? "active" : "")">
-                                <a href="@item.NavigationLink"><span>@item.Title</span></a>
-                            </li>
-                        }
-
-                        @if (showMoreButton)
-                        {
-
-                        }
-                    </ul>
-                </nav>
-            </div>
-        </aside>
-    }
-}*@
-
-
-@*
-    @Html.Partial("Advertisement", Model.Article.Advertisement)
-
-    <script type="text/javascript">
-        require(['startup', 'carousel', 'matchHeight', 'matchboxconfig', 'slick', 'livechat'],
-            function (startup, carousel, matchHeight, matchboxconfig, slick, livechat) {
-                startup.Init();
-                matchboxconfig.Init();
-                carousel.Init();
-                livechat.Init();
-            })
-    </script>
-*@
