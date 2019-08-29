@@ -2,15 +2,15 @@
 
 @{string title = ViewBag.Title != null ? ViewBag.Title.ToString() : "";}
 <nav class="breadcrumbs" aria-label="breadcrumbs">
-    <ol>
-        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+  <ol>
+    <li>@Html.ActionLink("Home", "Index", "Home")</li>
 
-        @{
-            foreach (var crumb in Model)
-            {
-                <li><a href="@crumb.NavigationLink">@crumb.Title</a></li>
-            }
-        }
-        <li class="current">@Html.ActionLink(title, ViewContext.RouteData.Values["action"].ToString(), ViewContext.RouteData.Values["controller"].ToString(), new { tag = ViewBag.Tag })</li>
-    </ol>
+    @{
+      foreach (var crumb in Model)
+      {
+        <li><a href="@crumb.NavigationLink">@crumb.Title</a></li>
+      }
+    }
+    <li class="current">@Html.ActionLink(title, ViewContext.RouteData.Values["action"].ToString(), ViewContext.RouteData.Values["controller"].ToString(), new { tag = ViewBag.Tag })</li>
+  </ol>
 </nav>
