@@ -20,7 +20,7 @@
   @Html.Partial("Breadcrumb", Model.Article.Breadcrumbs)
 }
 <div class="main">
-  <section class="intro">
+  <section class="content article-page">
     <h1>@Model.Article.Title</h1>
     @{
       if (Model.Article.Alerts != null)
@@ -33,7 +33,6 @@
     </div>
       }
     }
-  </section>
     @if (Model.DisplayedSection != null)
     {
       @Html.Partial("../Shared/Section-Nav")
@@ -42,11 +41,8 @@
     }
     else
     {
-  <section class="content article-page">
-    @Html.Raw(Model.Article.Body)
-  </section>
+      @Html.Raw(Model.Article.Body)
     }
-  <section class="function">
     <a href="javascript:window.print()" class="print-link">Print this page</a>
   </section>
 </div>

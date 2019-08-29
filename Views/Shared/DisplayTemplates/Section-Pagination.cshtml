@@ -1,29 +1,27 @@
 ﻿@model EssexWebapp.ViewModels.ArticleViewModel
-<section class="function">
-  <nav class="pagination" aria-label="pagination">
-    <ul>
-      @if (Model.ShouldShowPreviousSectionButton())
-      {
-        <li class="prev">
-          <a href="@Model.Article.NavigationLink/@Model.PreviousSection().Slug">
-            <span class="pagination-item">
-              <span class="fas fa-arrow-left"></span>Previous
-            </span>
-            <span>@Model.PreviousSection().Title</span>
-          </a>
-        </li>
-      }
-      @if (Model.ShouldShowNextSectionButton())
-      {
-        <li class="next">
-          <a href="@Model.Article.NavigationLink/@Model.NextSection().Slug">
-            <span class="pagination-item">
-              <span class="fas fa-arrow-right"></span>Next
-            </span>
-            <span>@Model.NextSection().Title</span>
-          </a>
-        </li>
-      }
-    </ul>
-  </nav>
-</section>
+<nav class="pagination" aria-label="pagination">
+  <ul>
+    @if (Model.ShouldShowPreviousSectionButton())
+    {
+      <li class="prev">
+        <a href="@Model.Article.NavigationLink/@Model.PreviousSection().Slug">
+          <span class="pagination-item">
+            <span class="fas fa-arrow-left"></span>Previous
+          </span>
+          <span>@Model.PreviousSection().Title</span>
+        </a>
+      </li>
+    }
+    @if (Model.ShouldShowNextSectionButton())
+    {
+      <li class="next">
+        <a href="@Model.Article.NavigationLink/@Model.NextSection().Slug">
+          <span class="pagination-item">
+            <span class="fas fa-arrow-right"></span>Next
+          </span>
+          <span>@Model.NextSection().Title</span>
+        </a>
+      </li>
+    }
+  </ul>
+</nav>
