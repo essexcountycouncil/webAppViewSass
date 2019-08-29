@@ -37,9 +37,7 @@
   @if (Model.Topic.EmailAlerts)
   {
   <section class="function">
-    <div class="signup">
-      @Html.Partial("EmailSubscribe", Model.Topic.EmailAlertsTopicId)
-    </div>
+    @Html.Partial("EmailSubscribe", Model.Topic.EmailAlertsTopicId)
   </section>
     }
 </div>
