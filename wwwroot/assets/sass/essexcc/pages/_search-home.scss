@@ -39,6 +39,10 @@
       padding-top: $baseline*3;
       padding-bottom: $baseline*3;
     }
+    @media print {
+      padding-top: $baseline;
+      padding-bottom: $baseline;
+    }
     .greeting, .search-input {
       @extend %grid-row;
       @include border-radius($border-radius);

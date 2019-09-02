@@ -2,10 +2,7 @@
 @model IEnumerable<EssexWebapp.Models.SubItem>
 @inject BusinessId BusinessId
 
-
-
 @foreach (var link in Model)
 {
-    
-    <li><a href="@link.NavigationLink">@link.Title</a></li>
+  <li><a href="@link.NavigationLink">@link.Title</a></li>
 }

@@ -15,10 +15,10 @@
 {
     <div class="alert js-hidden" id="tab-one" aria-hidden="true">
         <div class="alert-icon">
-            <i class="fas fa-exclamation-triangle alert-icon"></i> @*@Model.Severity.ToLowerInvariant()*@
+            <span class="fas fa-exclamation-triangle alert-icon"></span> @*@Model.Severity.ToLowerInvariant()*@
         </div>
         <div class="alert-text">
-            <h2>@Model.Title</h2>
+            <div class="section-heading">@Model.Title</div>
             @if (!string.IsNullOrEmpty(Model.SubHeading))
             {
                 <p class="alert-subheading">@Model.SubHeading</p>
@@ -26,9 +26,6 @@
 
             <p>@Html.Raw(Model.Body)</p>
         </div>
-        <div data-target="tab-one">
-            <input class="checkbox" id="hide-one" type="checkbox" aria-controls="tab-one" aria-expanded="false">
-            <label class="close" for="hide-one"><i class="fas fa-times" aria-hidden="true" data-slug="@Model.Slug"></i></label>
-        </div>
+        <button class="text" type="button" onclick="toggle_visibility('tab-one');">Hide this message</button>
     </div>
 }

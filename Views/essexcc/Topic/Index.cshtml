@@ -2,185 +2,42 @@
 @using EssexWebapp.ViewModels;
 @model TopicViewModel
 @{
-    var topic = Model.Topic;
-    ViewData["Title"] = topic.Name;
-    ViewData["og:title"] = topic.Name;
-    ViewData["Description"] = topic.Summary;
-    Layout = "../Shared/_Layout.cshtml";
+  var topic = Model.Topic;
+  ViewData["Title"] = topic.Name;
+  ViewData["og:title"] = topic.Name;
+  ViewData["Description"] = topic.Summary;
+  Layout = "../Shared/_Layout.cshtml";
 }
-
 @section Breadcrumbs {
-    @Html.Partial("Breadcrumb", topic.Breadcrumbs)
+  @Html.Partial("Breadcrumb", topic.Breadcrumbs)
 }
-
 <div class="main only">
-    <section class="intro">
-        <h1>@topic.Name</h1>
-
-        @*
-        @if (topic.Summary != null)
+  <section class="intro">
+    <h1>@topic.Name</h1>
+    @{
+      if (topic.Alerts != null)
+      {
+        foreach (var alert in topic.Alerts)
         {
-            @Html.Raw(@topic.Summary)
+          @Html.Partial("GlobalAlert", alert)
         }
-
-        @if (Model.Topic.EmailAlerts)
-        {
-            <div class="header-right-button grid-30 tablet-grid-30 mobile-grid-100">
-                <stock-button as-link="true" class="button-outline-white-transparent" href="@Model.EmailAlertsUrl" target="_blank"><i class="fa fa-envelope-o fa-1x"></i>Email alerts</stock-button>
-            </div>
-        }
-        *@
-
-
-        @{
-            if (topic.Alerts != null)
-            {
-                foreach (var alert in topic.Alerts)
-                {
-                    @*@Html.Partial("DisplayTemplates/Alert", alert)*@
-                    @Html.Partial("GlobalAlert", alert)
-                }
-            }
-        }
-
-        @if (topic.SubItems.Any())
-        {
-            @Html.Partial("PrimarySubitems", topic)
-        }
-    </section>
-    <section class="content">
-        @if (topic.SecondaryItems.Any())
-        {
-            @Html.Partial("SecondaryItems", topic)
-        }
-    </section>
-    @if (Model.Topic.EmailAlerts)
-    {
-        <section class="function">
-            <div class="signup">
-                @Html.Partial("EmailSubscribe", Model.Topic.EmailAlertsTopicId)
-            </div>
-        </section>
+      }
     }
-
-    @*
-            <section class="tight">
-                <h2>Guidance and legislation</h2>
-                <div class="preview-list">
-                    <ul>
-                        <li>
-                            <a href="#">Preview</a>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        </li>
-                        <li>
-                            <a href="#">Preview</a>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        </li>
-                        <li>
-                            <a href="#">Preview</a>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        </li>
-                    </ul>
-                    <div class="js-hidden" id="tab-two" aria-hidden="true">
-                        <ul>
-                            <li>
-                                <a href="#">Preview</a>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                            </li>
-                            <li>
-                                <a href="#">Preview</a>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                            </li>
-                        </ul>
-                    </div>
-                    <div data-target="tab-two">
-                        <input class="checkbox" id="toggle-two" type="checkbox" aria-controls="tab-two" aria-expanded="false">
-                        <label class="show" for="toggle-two">Show</label>
-                        <label class="hide" for="toggle-two">Hide</label>
-                    </div>
-                </div>
-                <div class="section-break-lg"></div>
-            </section>
-
-                <section class="loose">
-                    <h2>Latest news</h2>
-                    <div class="previews">
-                        <div class="preview">
-                            <img src="/public/images/news.jpg">
-                            <h4><a href="#">Preview heading with image above</a></h4>
-                            <p>Preview copy explaining what content it contains.</p>
-                            <p class="meta">3 October 2018</p>
-                        </div>
-                        <div class="preview">
-                            <img src="/public/images/news.jpg">
-                            <h4><a href="#">Preview heading with image above</a></h4>
-                            <p>Preview copy explaining what content it contains.</p>
-                            <p class="meta">3 October 2018</p>
-                        </div>
-                        <div class="preview">
-                            <img src="/public/images/news.jpg">
-                            <h4><a href="#">Preview heading with image above</a></h4>
-                            <p>Preview copy explaining what content it contains.</p>
-                            <p class="meta">3 October 2018</p>
-                        </div>
-                    </div>
-                </section>
-
-        <section class="loose">
-
-            <div class="signup">
-                <h3>
-                    Get the latest news and information about your council services
-                </h3>
-                <form action="/search" method="get" role="search" class="form">
-                    <div class="group">
-                        <div class="signup-input">
-                            <input type="text" class="form-control" placeholder="Enter your email address" id="full-name" name="name" required="">
-                        </div>
-                        <div class="signup-button">
-                            <input type="submit" class="button subscribe" value="Subscribe">
-                        </div>
-                    </div>
-                </form>
-            </div>
-
-        </section>
-    *@
-
+    @if (topic.SubItems.Any())
+    {
+      @Html.Partial("PrimarySubitems", topic)
+    }
+  </section>
+  <section class="content">
+  @if (topic.SecondaryItems.Any())
+  {
+    @Html.Partial("SecondaryItems", topic)
+  }
+  </section>
+  @if (Model.Topic.EmailAlerts)
+  {
+  <section class="function">
+    @Html.Partial("EmailSubscribe", Model.Topic.EmailAlertsTopicId)
+  </section>
+    }
 </div>
-
-
-@*
-        @Html.Partial("Advertisement", Model.Topic.Advertisement)
-
-        @Html.Partial("PrimarySubitems", topic)
-
-        @if (Model.Topic.ExpandingLinkBoxes != null && Model.Topic.ExpandingLinkBoxes.Any())
-        {
-            @Html.Partial("ExpandingLinkBox", topic)
-        }
-
-        @if (!string.IsNullOrEmpty(topic.EventBanner.Title))
-        {
-            @Html.Partial("Events/EventBanner", topic.EventBanner)
-        }
-
-        @if (topic.SecondaryItems.Any())
-        {
-            @Html.Partial("SecondaryItems", topic)
-        }
-
-        @if (topic.TertiaryItems.Any())
-        {
-            @Html.Partial("TertiaryItems", topic)
-        }
-
-    <script type="text/javascript">
-        require(['startup', 'expandinglinks', 'matchboxconfig', 'matchHeight'],
-            function (startup, expandinglinks, matchboxconfig, matchHeight) {
-                startup.Init();
-                expandinglinks.Init();
-                matchboxconfig.Init();
-            })
-    </script>
-*@

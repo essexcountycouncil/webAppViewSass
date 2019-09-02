@@ -1,32 +1,26 @@
 ﻿@using System.Runtime.InteropServices.ComTypes
 @model EssexWebapp.ViewModels.ArticleViewModel
-
 @{
-    var sections = Model.Article.Sections.ToList();
-    var actualCount = sections.Count;
-    var modifiedCount = actualCount % 2 == 0 ? (actualCount / 2) : (actualCount / 2) + 1;
+  var sections = Model.Article.Sections.ToList();
+  var actualCount = sections.Count;
+  var modifiedCount = actualCount % 2 == 0 ? (actualCount / 2) : (actualCount / 2) + 1;
 } 
-
 @if (sections.Any())
 {
-<section class="intro">
-    <nav class="contents@(sections.Count > 3 ? " split-list" : "" )">
-        <div class="heading"><h2>Contents</h2></div>
-        <ol class="list list-number" id="pages-in-this-service" role="navigation" aria-label="pages-in-this-service">
-
-            @for (int i = 1; i <= actualCount; i++)
-            {
-                @if (sections[i - 1].Slug == Model.DisplayedSection.Slug)
-                {
-                    <li>@sections[i - 1].Title</li>
-                }
-                else
-                {
-                    <li><a href="@Model.Article.NavigationLink/@sections[i - 1].Slug">@sections[i - 1].Title</a></li>
-                }
-            }
-        </ol>
-    </nav>
-    
-</section>
+<nav class="contents@(sections.Count > 3 ? " split-list" : "" )" aria-label="pages-in-this-service">
+  <div class="heading"><h2>Contents</h2></div>
+  <ol class="list list-number" id="pages-in-this-service">
+    @for (int i = 1; i <= actualCount; i++)
+    {
+      @if (sections[i - 1].Slug == Model.DisplayedSection.Slug)
+      {
+        <li>@sections[i - 1].Title</li>
+      }
+      else
+      {
+        <li><a href="@Model.Article.NavigationLink/@sections[i - 1].Slug">@sections[i - 1].Title</a></li>
+      }
+    }
+  </ol>
+</nav>
 }

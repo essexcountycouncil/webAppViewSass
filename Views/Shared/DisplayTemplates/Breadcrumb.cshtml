@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<EssexWebapp.Models.Crumb>
 
 @{string title = ViewBag.Title != null ? ViewBag.Title.ToString() : "";}
-<div class="breadcrumbs">
+<nav class="breadcrumbs" aria-label="breadcrumbs">
     <ol>
         <li>@Html.ActionLink("Home", "Index", "Home")</li>
 
@@ -13,4 +13,4 @@
         }
         <li class="current">@Html.ActionLink(title, ViewContext.RouteData.Values["action"].ToString(), ViewContext.RouteData.Values["controller"].ToString(), new { tag = ViewBag.Tag })</li>
     </ol>
-</div>
+</nav>

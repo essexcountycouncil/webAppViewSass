@@ -2,18 +2,15 @@
 
 @if (Model.SubItems.Any())
 {
-    
-        <ul class="link-boxes">
-            @foreach (var subItem in Model.SubItems)
-            {
-                <li class="link-box">
-                    <div class="link-content">
-                        <h2 class="sub-section-heading"><a href="@subItem.NavigationLink">@subItem.Title</a></h2>
-                        <p>@subItem.Teaser</p>
-                    </div>
-                </li>
-            }
-        </ul>
-    
+  <ul class="link-boxes">
+  @foreach (var subItem in Model.SubItems)
+  {
+    <li class="link-box">
+      <div class="link-content">
+        <a href="@subItem.NavigationLink" class="sub-section-heading">@subItem.Title</a>
+        <p>@subItem.Teaser</p>
+      </div>
+    </li>
+  }
+  </ul>
 }
-

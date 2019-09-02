@@ -1,21 +1,18 @@
 ﻿@model IEnumerable<EssexWebapp.Models.GenericFeaturedItem>
 @{
-
-    var numberOfItems = Model.Count();
-    var itemsPerRow = 3;
-    var numberOfRows = (numberOfItems / itemsPerRow) + 1;
-
-    for (int i = 0; i < numberOfRows; i++)
-    {
-        <div class="previews">
-            @foreach (var item in Model.Skip(i * itemsPerRow).Take(itemsPerRow))
-            {
-                <div class="preview">
-                    <h2 class="sub-section-heading"><a href="@item.Url">@item.Title</a></h2>
-                    <p>@item.Teaser</p>
-                </div>            
-            }
-        </div>
-    }
+  var numberOfItems = Model.Count();
+  var itemsPerRow = 3;
+  var numberOfRows = (numberOfItems / itemsPerRow) + 1;
+  for (int i = 0; i < numberOfRows; i++)
+  {
+    <div class="previews">
+      @foreach (var item in Model.Skip(i * itemsPerRow).Take(itemsPerRow))
+      {
+        <div class="preview">
+          <h3 class="sub-section-heading"><a href="@item.Url">@item.Title</a></h3>
+          <p>@item.Teaser</p>
+        </div>            
+      }
+    </div>
+  }
 }
-
