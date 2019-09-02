@@ -1,60 +1,90 @@
-.cookies {
-  @media print {
-    display: none;
-  }
-  background-color: $black;
-  padding: $baseline*0.75 $gutter*0.25;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  p {
-    color: $white;
-    display: inline;
-    @include media(mobile) {
-      display: block;
-    }
-    a {
-      color: $white;
-    }
-  }
-  .button {
-    float: right;
-    @include media(mobile) {
-      float: none;
-    }
-    border-color: $white;
-    background-color: $white;
-    color: $text-colour;
-  }
-}
-
-// http://silktide.com/cookieconsent
-
-// link within cookies
-a.cc_more_info {
-  color: $white;
-  &:hover {
-    color: $white-on-black-hover;
-  }
-}
+// // http://silktide.com/cookieconsent
 
 // button
 
 a.cc-btn {
   @include button;
-  background-color: $white !important;
-  border-color: $white !important;
-  color: $black !important;
+  background-color: $white;
+  border-color: $black;
+  color: $black;
+  font-weight: $semi;
   &:hover {
-    background-color: $white-on-black-hover !important;
-    border-color: $white-on-black-hover !important;
-    color: $black !important;
+    background-color: $white;
+    border-color: $grey-dark;
+    color: $grey-dark;
+  }
+  &:focus {
+    color: $black;
+    background-color: $white;
+    font-weight: $semi;
+    outline: $border-thick solid $focus-colour;
   }
 }
 
 // banner 
 
-.cc-banner {
-  background-color: $link !important;
+.cc-banner, .cc-revoke, .cc-window {
+  display: block;
+  box-sizing: content-box;
+  opacity: 1;
+  transition: opacity 0s ease;
+  z-index: 50;
+  @include media(mobile) {
+    padding: $baseline*0.5 $gutter;
+    position: relative;
+  }
+  @include media(tablet) {
+    padding: $baseline*0.75 $gutter;
+  }
+  @include media(desktop) {
+    padding: $baseline*0.75 $gutter*2;
+  }
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  background-color: $white;
+  color: $body-text-colour;
+  width: auto;
+  max-width: $site-width;
+  .cc-message {
+    flex: none;
+    float: left;
+    margin-right: $gutter;
+    width: auto;
+    @include media(mobile) {
+      @include smaller;
+      line-height: 1.6153846rem;
+      margin-bottom: $baseline*0.25;
+    }
+    @include media(tablet) {
+      line-height: $baseline;
+      margin-bottom: $baseline*0.75;
+    }
+    @include media(tablet) {
+      line-height: $baseline*1.5;
+      margin-bottom: 0;
+    }
+  }
+  .cc-link {
+    display: inline-block;
+    color: $link;
+    text-decoration: underline;
+    opacity: 1;
+    padding: 0;
+    &:hover {
+      color: $hover;
+      text-decoration: underline;
+    }
+    &:focus {
+      color: $black;
+      outline: $border-thick solid $focus-colour;
+    }
+  }
+  &.cc-invisible {
+    display: none;
+  }
+}
+
+.cc-compliance {
+  display: inline-block;
 }
