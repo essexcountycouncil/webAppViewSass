@@ -5,33 +5,28 @@
   <div class="footer-top">
     <div class="footer">
       <div class="nav">
-        <ul class="nav-links">  
-          @if (Model.Links != null)
-          {
-            @Html.Partial("FooterLinks", Model.Links)
-          }
+        <ul class="nav-links">
+          <li><a href="/topic/about-essexgovuk">About essex.gov.uk</a></li>
+          <li><a href="/accessibility">Accessibility</a></li>
+          <li><a href="/cookies">Cookies</a></li>
+          <li><a href="/terms-conditions">Terms and conditions</a></li>
+          <li><a href="/topic/contact-us">Contact us</a></li>
+          <li><a href="/topic/privacy-and-data-protection">Privacy and data protection</a></li>
+          <li><a href="/site-map">Site map</a></li>
         </ul>
         <ul class="social">
-          @if (Model.SocialMediaLinks != null)
-          {
-            @Html.Partial("SocialMediaLinks", Model.SocialMediaLinks)
-          }
-        </ul>  
+          <li><a href="https://www.facebook.com/essexcountycouncil"><span class="fab fa-facebook-f"></span><span>Facebook</span></a></li>
+          <li><a href="https://twitter.com/essex_cc"><span class="fab fa-twitter"></span><span>Twitter</span></a></li>
+          <li><a href="http://www.youtube.com/user/EssexCountyCouncil"><span class="fab fa-youtube"></span><span>YouTube</span></a></li>
+        </ul>
       </div>
     </div>
   </div>
   <div class="footer-bottom">
     <div class="footer">
       <ul class="credits">
-        <li class="copyright">
-          @if (Model.CopyrightSection != null)
-          {
-              @Model.CopyrightSection @DateTime.Now.Year
-          }
-        </li>
-        <li class="design-link">
-            <a href="https://servicedesign.blog.essex.gov.uk/">Built by the Service Design Team</a>
-        </li>
+        <li class="copyright">© Essex County Council @DateTime.Now.Year</li>
+        <li class="design-link"><a href="https://servicedesign.blog.essex.gov.uk/">Built by the Service Design Team</a></li>
       </ul>
     </div>
   </div>
