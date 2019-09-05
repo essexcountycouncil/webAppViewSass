@@ -4,69 +4,56 @@
 @inject BusinessId BusinessId
 @inject CurrentEnvironment CurrentEnvironment
 @inject FeatureToggles FeatureToggles
-
 <!DOCTYPE html>
 <html lang="en-GB" class="no-js">
 <head>
-    @Html.Partial("SecurityHeaders")
-    <meta charset="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    @Html.Partial("OwnershipVerificationCodes")
-    @Html.Partial("Favicon")
-    <title>Error - Essex County Council</title>
-
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
-
-    @Html.Partial("CookieBanner")
-    @await Component.InvokeAsync("GoogleAnalytics")
-    <script src="~/assets/javascript/vendor/modernizr.min.js"></script>
-    <script type="text/javascript" src="~/assets/javascript/vendor/require.2.3.4.min.js"></script>
-    <script type="text/javascript" src="/assets/javascript/requireConfig.js"></script>
-    <script src="~/assets/javascript/essexcc/cookieconsent.js"></script>
-    <!-- Hotjar Tracking Code for https://www.essex.gov.uk/Pages/Default.aspx -->
-
-    <script>
-
-        (function (h, o, t, j, a, r) {
-
-            h.hj = h.hj || function () { (h.hj.q = h.hj.q || []).push(arguments) };
-
-            h._hjSettings = { hjid: 719326, hjsv: 6 };
-
-            a = o.getElementsByTagName('head')[0];
-
-            r = o.createElement('script'); r.async = 1;
-
-            r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
-
-            a.appendChild(r);
-
-        })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
-
-    </script>
+  @Html.Partial("SecurityHeaders")
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  @Html.Partial("OwnershipVerificationCodes")
+  @Html.Partial("Favicon")
+  <title>Error - Essex County Council</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+  <link rel="stylesheet" href="~/assets/stylesheets/site-sg.min.css" asp-append-version="true">
+  @Html.Partial("CookieBanner")
+  @await Component.InvokeAsync("GoogleAnalytics")
+  <script src="~/assets/javascript/vendor/modernizr.min.js"></script>
+  <script type="text/javascript" src="~/assets/javascript/vendor/require.2.3.4.min.js"></script>
+  <script type="text/javascript" src="/assets/javascript/requireConfig.js"></script>
+  <script src="~/assets/javascript/essexcc/cookieconsent.js"></script>
+  <!-- Hotjar Tracking Code for https://www.essex.gov.uk/Pages/Default.aspx -->
+  <script>
+      (function (h, o, t, j, a, r) {
+        h.hj = h.hj || function () { (h.hj.q = h.hj.q || []).push(arguments) };
+        h._hjSettings = { hjid: 719326, hjsv: 6 };
+        a = o.getElementsByTagName('head')[0];
+        r = o.createElement('script'); r.async = 1;
+        r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
+  </script>
 </head>
 <body>
-    @if (!string.IsNullOrEmpty(ApplicationConfiguration.GetGoogleAnalyticsCode(BusinessId.ToString()).ToString()))
-    {
-        <!-- Google Tag Manager (noscript) -->
-        <noscript>
-            <iframe src="https://www.googletagmanager.com/ns.html?id=@ApplicationConfiguration.GetGoogleAnalyticsCode(BusinessId.ToString())"
-                    height="0" width="0" style="display:none;visibility:hidden"></iframe>
-        </noscript>
-        <!-- End Google Tag Manager (noscript) -->
-    }
-    <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
-    @Html.Partial("SkipToMainContent")
-    @Html.Partial("Header")
-    <main id="content">
-        <div class="container">
-            @RenderBody()
-        </div>
-    </main>
-    <distributed-cache name="footer" expires-after="@TimeSpan.FromMinutes(ApplicationConfiguration.GetFooterCache(BusinessId.ToString()))" enabled="true">
-        @await Component.InvokeAsync("Footer")
-    </distributed-cache>
+  @if (!string.IsNullOrEmpty(ApplicationConfiguration.GetGoogleAnalyticsCode(BusinessId.ToString()).ToString()))
+  {
+      <!-- Google Tag Manager (noscript) -->
+      <noscript>
+          <iframe src="https://www.googletagmanager.com/ns.html?id=@ApplicationConfiguration.GetGoogleAnalyticsCode(BusinessId.ToString())"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe>
+      </noscript>
+      <!-- End Google Tag Manager (noscript) -->
+  }
+  <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+  @Html.Partial("SkipToMainContent")
+  @Html.Partial("Header")
+  <main id="content">
+      <div class="container">
+          @RenderBody()
+      </div>
+  </main>
+  <distributed-cache name="footer" expires-after="@TimeSpan.FromMinutes(ApplicationConfiguration.GetFooterCache(BusinessId.ToString()))" enabled="true">
+      @await Component.InvokeAsync("Footer")
+  </distributed-cache>
 </body>
 </html>

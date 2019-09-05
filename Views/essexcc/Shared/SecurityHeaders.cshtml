@@ -4,9 +4,9 @@
 @using EssexWebapp.Utils
 @inject FeatureToggles FeatureToggles
 @{
-    var host = Context.Request.Host.Host;
-    var cspBuilder = new ContentSecurityPolicyBuilder();
-    var allowedContent = cspBuilder.BuildPolicy();
+  var host = Context.Request.Host.Host;
+  var cspBuilder = new ContentSecurityPolicyBuilder();
+  var allowedContent = cspBuilder.BuildPolicy();
 }
 
-<meta http-equiv="Content-Security-Policy" content="@allowedContent" />
+<meta http-equiv="Content-Security-Policy" content="@allowedContent">
