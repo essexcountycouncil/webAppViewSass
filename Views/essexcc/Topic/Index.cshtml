@@ -33,9 +33,9 @@
   {
     @Html.Partial("SecondaryItems", topic)
   }
-  </section>
   @if (Model.Topic.EmailAlerts)
   {
     @Html.Partial("EmailSubscribe", Model.Topic.EmailAlertsTopicId)
     }
+  </section>
 </div>
