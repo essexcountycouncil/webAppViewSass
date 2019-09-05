@@ -19,20 +19,20 @@
 @section Breadcrumbs {
   @Html.Partial("Breadcrumb", Model.Article.Breadcrumbs)
 }
+@{
+  if (Model.Article.Alerts != null)
+  {
+<div class="alert-container">
+  @foreach (var alert in Model.Article.Alerts)
+  {
+    @Html.Partial("GlobalAlert", alert)
+  }
+</div>
+  }
+}
 <div class="main">
   <section class="content article-page">
     <h1>@Model.Article.Title</h1>
-    @{
-      if (Model.Article.Alerts != null)
-      {
-    <div class="alert-container">
-      @foreach (var alert in Model.Article.Alerts)
-      {
-        @Html.Partial("GlobalAlert", alert)
-      }
-    </div>
-      }
-    }
     @if (Model.DisplayedSection != null)
     {
       @Html.Partial("../Shared/Section-Nav")
