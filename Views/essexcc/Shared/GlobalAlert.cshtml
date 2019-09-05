@@ -13,7 +13,7 @@
 }
 @if (!isDismissed)
 {
-  <div class="alert @Model.Severity.ToLowerInvariant() js-hidden" id="tab-alert-@Model.Severity" aria-hidden="true">
+  <div class="alert @Model.Severity.ToLowerInvariant()" id="tab-alert-@Model.Severity">
     <div class="alert-icon">
       @if (@Model.Severity.ToLowerInvariant() == "error")
       { 
