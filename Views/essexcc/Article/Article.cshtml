@@ -26,10 +26,10 @@
       if (Model.Article.Alerts != null)
       {
     <div class="alert-container">
-        @foreach (var alert in Model.Article.Alerts)
-        {
-          @Html.Partial("GlobalAlert", alert)
-        }
+      @foreach (var alert in Model.Article.Alerts)
+      {
+        @Html.Partial("GlobalAlert", alert)
+      }
     </div>
       }
     }
