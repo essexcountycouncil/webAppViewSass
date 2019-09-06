@@ -1,5 +1,4 @@
 .hero {
-  background-image: file-url("/img/hero.jpg");
   @media print {
     background-image: none;
   }
@@ -8,10 +7,4 @@
   background-position-x: 0;
   background-position-y: 0;
   width: 100%;
-  &.tree {
-    background-image: file-url("/main-hero.jpg");
-  }
-  &.campaign {
-    background-image: file-url("/img/impact.jpg");
-  }
 }
