@@ -1,101 +1,45 @@
 ﻿@using EssexWebapp.Models;
 @using EssexWebapp.ViewModels;
 @model NewsViewModel
-
 @{
-    ViewData["Title"] = Model.NewsItem.Title;
-    ViewData["Description"] = Model.NewsItem.Teaser;
-    Layout = "../Shared/_Layout.cshtml";
-    var latestNews = Model.GetLatestNews();
-    ViewData["og:title"] = Model.NewsItem.Title;
+  ViewData["Title"] = Model.NewsItem.Title;
+  ViewData["Description"] = Model.NewsItem.Teaser;
+  Layout = "../Shared/_Layout.cshtml";
+  var latestNews = Model.GetLatestNews();
+  ViewData["og:title"] = Model.NewsItem.Title;
 }
-
 @section Breadcrumbs {
-    <partial name="Breadcrumb" model='Model.NewsItem.Breadcrumbs'/>
+  <partial name="Breadcrumb" model='Model.NewsItem.Breadcrumbs'/>
 }
-    <div class="main">
-
-        @*<div tabindex="-1" id="content" class="l-body-section-filled l-article-content @(latestNews.Any()
-        ? "mobile-grid-100 tablet-grid-100 grid-70"
-        : "mobile-grid-100 tablet-grid-100 grid-100")">*@
-        <section aria-label="@Model.NewsItem.Title content" class="intro">
-
-            @{
-                if (Model.NewsItem.Alerts != null)
-                {
-                    foreach (var alert in Model.NewsItem.Alerts)
-                    {
-                        <partial name="DisplayTemplates/Alert" model='alert' />
-                    }
-                }
-            }
-
-            <h1 class="page-heading">@Model.NewsItem.Title</h1>
-            @*<h2 class="news-teaser">@Model.NewsItem.Teaser</h2>*@
-           
-        </section>
-        <section class="content news-page">
-            @if (!string.IsNullOrEmpty(Model.NewsItem.Image))
-            {
-                <img src="@Model.NewsItem.Image" alt="@Model.NewsItem.Title" width="200" height="112" />
-            }
-            @Html.Raw(Model.NewsItem.Body)
-
-            <p class="meta">
-                Last updated <partial name="FormattedDate" model='Model.NewsItem.SunriseDate' />
-            </p>
-        </section>
-                @*<ul class="news-tags">
-                    @foreach (var newsTag in Model.NewsItem.Tags)
-                    {
-                        <li class="news-tag">
-                            <a href="@Url.Action("Index", "News", new {tag = newsTag})">@newsTag</a>
-                        </li>
-                    }
-                </ul>*@
-                @*<div class="share border top-border">
-                    <div class="grid-20">
-                        <partial name="Share" />
-                    </div>
-                </div>*@
-            
-        
-        @* </div>*@
-        @*@{
-            if (latestNews.Any())
-            {
-                <div class="l-left-side-bar grid-30 tablet-grid-100 mobile-grid-100 grid-parent">
-                    <div class="l-left-side-bar-section">
-                        <h2>Latest News</h2>
-                        <ul>
-                            @foreach (var item in latestNews.Take(6))
-                            {
-                                <li class="@(item.Slug == Model.NewsItem.Slug ? "active" : "")">
-                                    <a href="@Url.Action("Detail", "News", new {Slug = item.Slug})">@item.Title</a>
-                                </li>
-                            }
-                            @if (latestNews.Count() > 6)
-                            {
-                                <li>
-                                    <a href="@Url.Action("Index", "News")">
-                                        <strong>More</strong>
-                                    </a>
-                                </li>
-                            }
-                        </ul>
-                    </div>
-                </div>
-            }
-        }*@
-
-    </div>
+<div class="main">
+  <section aria-label="@Model.NewsItem.Title" class="content news-page">
+    @{
+      if (Model.NewsItem.Alerts != null)
+      {
+        foreach (var alert in Model.NewsItem.Alerts)
+        {
+          <partial name="DisplayTemplates/Alert" model='alert' />
+        }
+      }
+    }
+    <h1 class="page-heading">@Model.NewsItem.Title</h1>
+    @if (!string.IsNullOrEmpty(Model.NewsItem.Image))
+    {
+      <img src="@Model.NewsItem.Image" alt="@Model.NewsItem.Title" width="200" height="112" />
+    }
+    @Html.Raw(Model.NewsItem.Body)
+    <p class="meta">
+      Last updated <partial name="FormattedDate" model='Model.NewsItem.SunriseDate' />
+    </p>
+  </section>
+</div>
 <script type="text/javascript">
-     require(['startup', 'favourites', 'expandinglinks', 'primaryfilter', 'filters'],
-         function (startup, favourites, expandinglinks,  primaryfilter, filters) {
-             favourites.Init();         
-             startup.Init();
-             expandinglinks.Init();
-             primaryfilter.Init();
-             filters.Init();             
-         })
- </script>
+  require(['startup', 'favourites', 'expandinglinks', 'primaryfilter', 'filters'],
+    function (startup, favourites, expandinglinks,  primaryfilter, filters) {
+      favourites.Init();         
+      startup.Init();
+      expandinglinks.Init();
+      primaryfilter.Init();
+      filters.Init();             
+    })
+</script>

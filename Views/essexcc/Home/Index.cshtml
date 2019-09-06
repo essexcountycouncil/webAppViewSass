@@ -22,7 +22,7 @@
 <main id="content">
   <div class="container">
     <div class="main only">
-      <section class="content">
+      <section class="content" aria-label="Essex County Council Services">
         @if (Model.HomepageContent.Alerts != null)
         {
           foreach (var alert in Model.HomepageContent.Alerts)
@@ -30,27 +30,27 @@
             @Html.Partial("GlobalAlert", alert)
           }
         }
-      <h2 class="content-heading">Essex County Council Services</h2>
-      @Html.Partial("GenericFeaturedItemList", Model.HomepageContent.GenericItemList)
-      @Html.Partial("Carousel", Model.HomepageContent.CarouselContents)
-      @if (Model.FeaturedNews != null)
-      {
-        <h2>News</h2>
-        <div class="previews news">
-          @foreach (var item in Model.FeaturedNews)
-          {
-            <div class="preview">
-              @if(item.Image != "")
-              {
-                <img src=@item.Image alt="@item.Title" width="200" height="112">
-              }
-              <h3 class="sub-section-heading"><a href="/news/@item.Slug">@item.Title</a></h3>
-              <p>@item.Teaser</p>
-              <p class="meta">@Html.Partial("FormattedDate", item.SunriseDate)</p>
-            </div>
-          }
-        </div>
-      }
+        <h2 class="content-heading">Essex County Council Services</h2>
+        @Html.Partial("GenericFeaturedItemList", Model.HomepageContent.GenericItemList)
+        @Html.Partial("Carousel", Model.HomepageContent.CarouselContents)
+        @if (Model.FeaturedNews != null)
+        {
+          <h2>News</h2>
+          <div class="previews news">
+            @foreach (var item in Model.FeaturedNews)
+            {
+              <div class="preview">
+                @if(item.Image != "")
+                {
+                  <img src=@item.Image alt="@item.Title" width="200" height="112">
+                }
+                <h3 class="sub-section-heading"><a href="/news/@item.Slug">@item.Title</a></h3>
+                <p>@item.Teaser</p>
+                <p class="meta">@Html.Partial("FormattedDate", item.SunriseDate)</p>
+              </div>
+            }
+          </div>
+        }
       </section>
     </div>
   </div>
