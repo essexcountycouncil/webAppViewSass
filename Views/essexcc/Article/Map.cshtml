@@ -23,7 +23,7 @@
     <!-- Layerinfo plugin CSS files -->
     <link href="//essex.astuntechnology.com/custom/layerinfo/layerinfo.css" type="text/css" rel="stylesheet" />
     <!-- End of Layerinfo plugin CSS files -->
-    <script type="text/javascript" src="//essex.astuntechnology.com/js/responsivedesign.js"></script>
+    <script src="//essex.astuntechnology.com/js/responsivedesign.js"></script>
     <style>
 			#atMap {
 				position: relative;
@@ -186,7 +186,7 @@
     </style>
     <link type="text/css" href="//essex.astuntechnology.com/custom/css/mycouncil.css" rel="stylesheet" />
 
-    <script type="text/javascript">
+    <script>
         if (!window.astun) { window.astun = {}; }
         if (!window.astun.settings) { window.astun.settings = {}; }
         window.astun.settings.addressSearch = {
@@ -196,8 +196,8 @@
         window.astun.settings.mapOptions.showSearchResultsUnderMap = true;
         var responsiveDesign = new astun.ResponsiveDesign(240);
     </script>
-    <script type="text/javascript" src="//essex.astuntechnology.com/js/lib/prototype-1.6.0.3.js"></script>
-    <script type="text/javascript" src="//essex.astuntechnology.com/FileIncluderJS.aspx?language="></script>
+    <script src="//essex.astuntechnology.com/js/lib/prototype-1.6.0.3.js"></script>
+    <script src="//essex.astuntechnology.com/FileIncluderJS.aspx?language="></script>
 </head>
 
 <body>
@@ -228,7 +228,7 @@
             </div> <!-- #atContent -->
         </div> <!-- #atMyMaps -->
     </form>
-    <script type="text/javascript">
+    <script>
         Event.observe(window, 'load', function () {
             pageType = $('atMap') ? 'isharemaps.mymaps' : 'isharemaps.simple';
             Astun.JS.IncludeJS(pageType, function () {

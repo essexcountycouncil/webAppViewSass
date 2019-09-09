@@ -21,8 +21,8 @@
   @RenderSection("CarouselBackgroundImage")
   @Html.Partial("CookieBanner")
   @await Component.InvokeAsync("GoogleAnalytics")
-  <script type="text/javascript" src="~/assets/javascript/vendor/require.2.3.4.min.js"></script>
-  <script type="text/javascript" src="/assets/javascript/requireConfig.js"></script>
+  <script src="~/assets/javascript/vendor/require.2.3.4.min.js"></script>
+  <script src="/assets/javascript/requireConfig.js"></script>
   <script src="~/assets/javascript/essexcc/cookieconsent.js"></script>
   <!-- Hotjar Tracking Code for https://www.essex.gov.uk/Pages/Default.aspx -->
   <script>
@@ -60,12 +60,12 @@
   <script src="~/assets/javascript/vendor/auto-store-data.js"></script>
   <script src="~/assets/javascript/vendor/close.js"></script>
   <script src="~/assets/javascript/essexcc/cookieconsent.js"></script>
-  <script type="text/javascript">
+  <script>
   require(['validate', 'clipboard', 'jquery-ui', 'jquery.cookie'],
     function (validate, clipboard, jqueryui, jquerycookie) {
       })
   </script>
-  <script type="text/javascript">
+  <script>
   require(['cludo'], function () { });
   require(['cludoconfig'],
     function (cludoconfig) {
