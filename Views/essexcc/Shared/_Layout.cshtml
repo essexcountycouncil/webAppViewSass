@@ -5,8 +5,8 @@
 <!DOCTYPE html>
 <html lang="en-GB" class="no-js">
 <head>
-  @Html.Partial("SecurityHeaders")
   <meta charset="utf-8">
+  @Html.Partial("SecurityHeaders")
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   @Html.Partial("OwnershipVerificationCodes")
@@ -47,7 +47,7 @@
   {
     <!-- Google Tag Manager (noscript) -->
     <noscript>
-      <iframe src="https://www.googletagmanager.com/ns.html?id=@ApplicationConfiguration.GetGoogleAnalyticsCode(BusinessId.ToString())" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+      <iframe title="Google Tag Manager" src="https://www.googletagmanager.com/ns.html?id=@ApplicationConfiguration.GetGoogleAnalyticsCode(BusinessId.ToString())" height="0" width="0" style="display:none;visibility:hidden"></iframe>
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
   }

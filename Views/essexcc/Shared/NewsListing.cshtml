@@ -28,11 +28,11 @@ else
         <p class="meta">
           <partial name="FormattedDate" model='subItem.SunriseDate' />
         </p>
-        <h3 class="sub-section-heading">
+        <h2 class="sub-section-heading">
           <a href="@Url.Action("Detail", "News", new {slug = subItem.Slug})">
             @subItem.Title
           </a>
-        </h3>
+        </h2>
         <p>
           @subItem.Teaser
         </p>
