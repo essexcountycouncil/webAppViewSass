@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="~/assets/stylesheets/site-sg.min.css" asp-append-version="true">
   @Html.Partial("CookieBanner")
   @await Component.InvokeAsync("GoogleAnalytics")
-  <script type="text/javascript" src="~/assets/javascript/vendor/require.2.3.4.min.js"></script>
-  <script type="text/javascript" src="/assets/javascript/requireConfig.js"></script>
+  <script src="~/assets/javascript/vendor/require.2.3.4.min.js"></script>
+  <script src="/assets/javascript/requireConfig.js"></script>
   <!-- Hotjar Tracking Code for https://www.essex.gov.uk/Pages/Default.aspx -->
   <script>
     (function (h, o, t, j, a, r) {
@@ -72,11 +72,11 @@
   <script src="~/assets/javascript/vendor/close.js"></script>
   <!-- cookieconsent.osano.com -->
   <script src="~/assets/javascript/essexcc/cookieconsent.js"></script>
-  <script type="text/javascript">
+  <script>
     require(['validate', 'clipboard', 'jquery-ui', 'jquery.cookie'],
     function (validate, clipboard, jqueryui, jquerycookie) {})
   </script>
-  <script type="text/javascript">
+  <script>
     require(['cludo'], function () { });
     require(['cludoconfig'],
       function (cludoconfig) {
