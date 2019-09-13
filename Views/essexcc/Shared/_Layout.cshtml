@@ -60,7 +60,7 @@
     <div class="container">
       @RenderBody()
     </div>
-    <div class="hidden" id="envname">@CurrentEnvironment.Name</div>
+    <!-- <div id="envname">@CurrentEnvironment.Name</div> -->
   </main>
   <distributed-cache name="footer" expires-after="@TimeSpan.FromMinutes(ApplicationConfiguration.GetFooterCache(BusinessId.ToString()))" enabled="true">
     @await Component.InvokeAsync("Footer")
