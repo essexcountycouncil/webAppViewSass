@@ -14,20 +14,6 @@
 @if (!isDismissed)
 {
   <div class="alert @Model.Severity.ToLowerInvariant()" id="tab-alert-@Model.Severity">
-    <div class="alert-icon">
-      @if (@Model.Severity.ToLowerInvariant() == "error")
-      { 
-        <span class="fas fa-exclamation-circle alert-icon"></span>
-      }
-      @if (@Model.Severity.ToLowerInvariant() == "warning")
-      {
-        <span class="fas fa-exclamation-triangle alert-icon"></span>
-      }
-      @if (@Model.Severity.ToLowerInvariant() == "information")
-      {
-        <span class="fas fa-info-circle alert-icon"></span>
-      }
-    </div>
     <div class="alert-text">
       <div class="section-heading">@Model.Title</div>
       @if (!string.IsNullOrEmpty(Model.SubHeading))
