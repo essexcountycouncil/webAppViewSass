@@ -10,24 +10,24 @@
     margin-left: -$gutter !important;
     margin-right: -$gutter !important;
     .landing-preview {
-      padding-left: $gutter*0.5 !important;
-      padding-right: $gutter*0.5 !important;
+      padding-left: $gutter !important;
+      padding-right: $gutter !important;
     }
   }
   @include media(tablet) {
     margin-left: -$gutter*0.5 !important;
     margin-right: -$gutter*0.5 !important;
     .landing-preview {
-      padding-left: 0 !important;
-      padding-right: 0 !important;   
+      padding-left: $gutter*0.5 !important;
+      padding-right: $gutter*0.5 !important;   
     }
   }
   @include media(desktop) {
     margin-left: -$gutter !important;
     margin-right: -$gutter !important;
     .landing-preview {
-      padding-left: 0 !important;
-      padding-right: 0 !important;
+      padding-left: $gutter !important;
+      padding-right: $gutter !important;
     }
   }
   .landing-preview {
