@@ -50,6 +50,9 @@
   @Html.Partial("SkipToMainContent")
   @Html.Partial("BrowserCheck")
   @Html.Partial("Header")
+  <!-- <div class="homepage">
+    @Html.Partial("EmergencyBanner")
+  </div> -->
   @RenderBody()
   <distributed-cache name="footer" expires-after="@TimeSpan.FromMinutes(ApplicationConfiguration.GetFooterCache(BusinessId.ToString()))" enabled="true">
   @await Component.InvokeAsync("Footer")
