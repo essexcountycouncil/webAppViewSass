@@ -1,51 +1,65 @@
 .signup {
   margin-top: $baseline;
+
   @media print {
     display: none;
   }
+
   .section-heading {
     @include media(desktop) {
       @include h2;
     }
   }
+
   .form {
     @extend %grid-row;
-    margin-bottom: $baseline*0.5;
+    margin-bottom: $baseline * 0.5;
+
     @include media(mobile) {
-      margin-left: -$gutter*0.5;
-      margin-right: -$gutter*0.5;
+      margin-left: -$gutter * 0.5;
+      margin-right: -$gutter * 0.5;
     }
+
     .group {
       margin-bottom: 0;
+
       label {
         color: $body-text-colour;
         background: $white;
         z-index: 0;
         margin-right: 0;
       }
-      .signup-input, .signup-button {
+
+      .signup-input,
+      .signup-button {
         @include media(mobile) {
           padding-left: $gutter;
           padding-right: $gutter;
         }
       }
+
       .signup-input {
         position: relative;
         @include grid-column(8 / 12);
+
         @include media(mobile) {
           margin-bottom: $baseline;
         }
-        label, input {
+
+        label,
+        input {
           @include box-sizing(border-box);
-          padding: $baseline*0.5;
+          padding: $baseline * 0.5;
           font-size: ms(1);
           line-height: $baseline;
         }
+
         label {
           position: relative;
           margin-top: 0;
           margin-bottom: 0;
         }
+
         input {
           text-transform: none;
           position: absolute;
@@ -54,21 +68,25 @@
           height: $form-height;
           width: 100%;
         }
+
         input:-webkit-autofill {
           -webkit-box-shadow: 0 0 0px 1000px $white inset;
         }
       }
+
       .signup-button {
         @include grid-column(4 / 12);
         position: relative;
-        button.button.subscribe {
+
+        .button.subscribe {
           @include more;
           border: $border-normal $brand solid;
+
           &:hover {
             border: $border-normal $brand-hover-darken solid;
             color: $white;
             background-color: $brand-hover-darken;
-          }                    
+          }
         }
       }
     }
@@ -77,76 +95,114 @@
 
 .signup-background {
   background-color: $brand;
+  // background-color: aqua;
   .signup {
     @extend %site-width-container;
     @extend %contain-floats;
     padding-top: $baseline;
     padding-bottom: $baseline;
+
     @include media(mobile) {
       padding-top: $baseline;
       padding-bottom: $baseline;
     }
+
     .section-heading {
       @include media(desktop) {
         @include h2;
         font-weight: $normal;
       }
     }
-    .section-heading, p {
+
+    .section-heading,
+    p {
       @extend %grid-row;
+
       @include media(mobile) {
-        padding-left: $gutter*0.5;
-        padding-right: $gutter*0.5;
+        padding-left: $gutter * 0.5;
+        padding-right: $gutter * 0.5;
       }
+
       @include media(tablet) {
-        padding-left: $gutter*0.5;
-        padding-right: $gutter*0.5;
+        padding-left: $gutter * 0.5;
+        padding-right: $gutter * 0.5;
       }
+
       @include media(desktop) {
         padding-left: $gutter;
         padding-right: $gutter;
       }
+
       color: $white;
       margin-top: 0;
     }
-    .form {
-      .group {
-        .signup-input {
-          input {
-            border: none;
-            &:focus {
-              outline-offset: 0;
-            }
-          }
-        }
-        .signup-button {
-          button.button.subscribe {
-            color: $white;
-            border: $border-normal $white solid;
-            @include media(mobile) {
-              margin-bottom: 0;
-            }
-            &:hover {
-              color: $brand;
-              background-color: $white;
-            }
-          }
-        }
+
+    .form .group .signup-input input {
+      border: none;
+      &:focus {
+        outline-offset: 0;
       }
     }
+
+    .signup-button {
+      @extend %grid-row;
+
+      @include media(mobile) {
+        padding-left: $gutter * 0.5;
+        padding-right: $gutter * 0.5;
+      }
+
+      @include media(tablet) {
+        padding-left: $gutter * 0.5;
+        padding-right: $gutter * 0.5;
+      }
+
+      @include media(desktop) {
+        padding-left: $gutter;
+        padding-right: $gutter;
+      }
+    }
+
     .social {
       text-align: left;
       margin-top: 0;
       margin-bottom: 0;
+
       li {
-        padding: 0 $gutter*0.05 0 $gutter*0.05;
+        padding: 0 $gutter * 0.05 0 $gutter * 0.05;
+
         a {
           color: $white;
+
           &:hover {
             color: $white-on-black-hover;
           }
         }
       }
+    }
+  }
+}
+
+.signup-button.btn-area {
+  margin-top: 15px;
+  padding-left: 0;
+  padding-right: 0;
+
+  a.button.subscribe {
+    background-color: $brand;
+    border: $border-normal $white solid;
+    color: $white;
+    text-align: center;
+    width: 33%;
+
+    @include media(mobile) {
+      margin-bottom: 0;
+      width: 100%;
+    }
+
+    &:hover {
+      color: $brand;
+      background-color: $white;
     }
   }
 }
